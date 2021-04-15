@@ -36,12 +36,32 @@ class LinkedList{
         }
         cout<<endl;
     }
+
+    void addElementAt(int pos,int val){
+        Node *current = NULL;
+        Node *before = NULL;
+        Node *temp = new Node();
+        temp->value=val;
+        current=head;
+        pos--;
+        while(pos>0){
+            before=current;
+            current=current->next;
+            pos--;
+        }
+        before->next = temp;
+        temp->next = current;
+    }
 };
 
 
 int main(){
     LinkedList *list = new LinkedList(10);
     list->addElement(20);
+    list->addElement(30);
+    list->addElement(40);
+    list->printALL();
+    list->addElementAt(2,100);
     list->printALL();
     return 0;
 }
